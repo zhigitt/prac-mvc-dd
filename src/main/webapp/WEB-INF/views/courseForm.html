@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Company</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+
+<style>
+    body {
+        padding: 20px;
+        background-color: #f8f9fa; /* Цвет фона */
+        font-family: Arial, sans-serif; /* Шрифт */
+    }
+
+    form {
+        max-width: 400px; /* Максимальная ширина формы */
+        margin: 0 auto; /* Центрирование формы */
+        background-color: #fff; /* Фон формы */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень */
+    }
+
+    label {
+        color: #6c757d; /* Цвет меток */
+        font-weight: bold; /* Жирный текст */
+    }
+
+    input[type="text"] {
+        border: 1px solid #ced4da; /* Цвет границы */
+        border-radius: 5px; /* Скругление углов */
+        padding: 8px;
+        width: 100%; /* Ширина поля ввода */
+        margin-bottom: 15px; /* Отступ снизу */
+    }
+
+    .btn-success {
+        background-color: #6c757d; /* Цвет кнопки */
+        border-color: #6c757d; /* Цвет границы кнопки */
+        width: 100%; /* Ширина кнопки */
+        padding: 10px;
+        border-radius: 5px; /* Скругление углов кнопки */
+    }
+
+    .btn-success:hover {
+        background-color: #495057; /* Цвет кнопки при наведении */
+        border-color: #495057; /* Цвет границы кнопки при наведении */
+    }
+</style>
+
+<body>
+<form th:method="POST" th:action="@{/courses/editCourse/{courseId}(courseId=${course.getId()})}" th:object="${course}">
+    <div>
+
+        <label for="courseName">Course name</label>
+        <input type="text" th:field="*{courseName}" id="courseName">
+    </div>
+    <div>
+        <label for="description">Description</label>
+        <input type="text" th:field="*{description}" id="description">
+
+    </div>
+    <div>
+        <label for="price">Price</label>
+        <input type="text" th:field="*{price}" id="price">
+
+    </div>
+<!--    <div>-->
+<!--    -->
+<!--        <label for="imageLink">Image link</label>-->
+<!--        <input type="text" th:field="*{imageLink}" id="imageLink">-->
+<!--    -->
+<!--    </div>-->
+    <button type="submit" class="btn-success">Update</button>
+</form>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</html>

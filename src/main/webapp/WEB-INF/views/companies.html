@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Company</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        padding: 20px;
+    }
+
+    .table th,
+    .table td {
+        border: none;
+    }
+
+    .btn-add {
+        background-color: #8a2be2; /* фиолетовый */
+        color: #fff; /* белый текст */
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .btn-add:hover {
+        background-color: #ff4500; /* оранжевый при наведении */
+    }
+</style>
+<body>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Address</th>
+            <th scope="col">Info</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+        </tr>
+        </thead>
+        <tbody>
+        <div th:each="company: ${allCompanies}">
+            <tr>
+                <th scope="row" th:text="${company.getId()}"></th>
+                <td th:text="${company.getName()}"></td>
+                <td th:text="${company.getDescription()}"></td>
+                <td th:text="${company.getAddress()}"></td>
+
+                <td>
+                    <a class="btn-add" th:href="@{/companies/find/{companyId}(companyId=${company.getId()})}"
+                    role="button">Info</a>
+                </td>
+                <td>
+                    <a th:method="DELETE" class="btn-add" th:href="@{/companies/delete/{companyId}(companyId=${company.id})}"
+                       role="button">Delete</a>
+                </td>
+                <td>
+                    <a class="btn-add" th:href="@{companies/update/{companyId}(companyId=${company.getId()})}">Update</a>
+                </td>
+            </tr>
+        </div>
+        </tbody>
+    </table>
+    <div>
+        <a class="btn-add" th:href="@{/companies/new}" role="button">Add company</a>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</html>
